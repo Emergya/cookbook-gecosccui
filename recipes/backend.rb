@@ -78,6 +78,14 @@ service "mongod" do
     action [:enable, :start]
 end
 
+#package "redis" do
+#    action :install
+#end
+
+#service "redis" do
+#    action [:enable, :start]
+#end
+
 # Create the gecoscc virtualenv
 python_virtualenv virtualenv_path do
     action :create

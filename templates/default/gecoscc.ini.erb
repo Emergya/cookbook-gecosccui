@@ -10,6 +10,8 @@ pyramid.default_locale_name = en
 pyramid.locales = ["en", "es"]
 
 jinja2.directories = gecoscc:templates
+jinja2.filters =
+    admin_jsonify = gecoscc.filters.admin_serialize
 
 mongo_uri = <%= node['gecoscc-ui']['mongodb']['url'] %>
 
@@ -24,13 +26,6 @@ session.cookie_on_exception = true
 chef.url = <%= node['gecoscc-ui']['chef-server']['url'] %>
 chef.cookbook_name = gecos_ws_mgmt
 
-firstboot_api.version = 0.2.0
-firstboot_api.organization_name = Organization name
-firstboot_api.media = %(here)s/../gecoscc/media/users
-firstboot_api.gem_repo = http://rubygems.org
-
-help_manual_url = http://forja.guadalinex.org/webs/gecos/doc/v2/doku.php
-
 ## Change this if you dont want to use mongo
 ## BROKER_URL = mongodb://localhost:27017/gecoscc
 ## CELERY_RESULT_BACKEND = mongodb
@@ -42,6 +37,17 @@ help_manual_url = http://forja.guadalinex.org/webs/gecos/doc/v2/doku.php
 ##     "taskmeta_collection": "celery_taskmeta",
 ##     }
 CELERYD_CONCURRENCY = 1
+
+redis.conf =
+    {"host": "localhost",
+     "port": 6379}
+
+firstboot_api.version = 0.2.0
+firstboot_api.organization_name = Organization name
+firstboot_api.media = %(here)s/../gecoscc/media/users
+firstboot_api.gem_repo = http://rubygems.org
+
+help_manual_url = http://forja.guadalinex.org/webs/gecos/doc/v2/doku.php
 
 repositories = ["http://v2.gecos.guadalinex.org/gecos/", "http://v2.gecos.guadalinex.org/ubuntu/", "http://v2.gecos.guadalinex.org/mint/"]
 
@@ -58,8 +64,9 @@ setup_console_handler = False
 use = egg:gunicorn#main
 host = 0.0.0.0
 port = %(http_port)s
-workers = 2
+workers = 4
 worker_class = gevent
+# worker_class = gecoscc.socks.GecosGeventSocketIOWorker
 timeout = 600
 
 # Begin logging configuration
