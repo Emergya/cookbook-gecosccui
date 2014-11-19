@@ -7,6 +7,7 @@ pyramid.debug_notfound = false
 pyramid.debug_routematch = false
 pyramid.debug_templates = false
 pyramid.default_locale_name = en
+pyramid.locales = ["en", "es"]
 
 jinja2.directories = gecoscc:templates
 
@@ -41,6 +42,8 @@ help_manual_url = http://forja.guadalinex.org/webs/gecos/doc/v2/doku.php
 ##     "taskmeta_collection": "celery_taskmeta",
 ##     }
 CELERYD_CONCURRENCY = 1
+
+repositories = ["http://v2.gecos.guadalinex.org/gecos/", "http://v2.gecos.guadalinex.org/ubuntu/", "http://v2.gecos.guadalinex.org/mint/"]
 
 [pipeline:main]
 pipeline =
