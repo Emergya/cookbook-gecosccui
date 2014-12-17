@@ -55,6 +55,12 @@ repositories = ["http://v2.gecos.guadalinex.org/gecos/", "http://v2.gecos.guadal
 printers.urls = ["http://www.openprinting.org/download/foomatic/foomatic-db-nonfree-current.tar.gz",
                 "http://www.openprinting.org/download/foomatic/foomatic-db-current.tar.gz"]
 
+software_profiles =
+    {
+    "test_profile_1": ["sl", "pidgin"],
+    "test_profile_2": ["xrdp", "arandr"]
+    }
+
 [pipeline:main]
 pipeline =
     translogger
