@@ -46,9 +46,9 @@ redis.conf =
 firstboot_api.version = 0.2.0
 firstboot_api.organization_name = <%= ENV['ORGANIZATION_NAME'] %>
 firstboot_api.media = %(here)s/../gecoscc/media/users
-firstboot_api.gem_repo = http://rubygems.org
+firstboot_api.gem_repo = <%= ENV['RUBY_GEMS_REPOSITORY'] %>
 
-help_manual_url = http://forja.guadalinex.org/webs/gecos/doc/v2/doku.php
+help_manual_url = <%= ENV['HELP_URL'] %>
 
 update_error_interval = 24
 
@@ -77,6 +77,7 @@ use = egg:gunicorn#main
 host = 0.0.0.0
 port = %(http_port)s
 workers = 4
+# CHANGE DEFAULT WORKER_CLASS FOR WEBSOCKETS (BETTER USER EXPERIENCE)
 worker_class = gevent
 # worker_class = gecoscc.socks.GecosGeventSocketIOWorker
 timeout = 600
