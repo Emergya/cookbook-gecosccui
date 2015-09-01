@@ -1,4 +1,13 @@
 [app:gecoscc]
+
+# Monitoring parameters
+server_name=<%= node['hostname'] %>
+server_ip=<%= ENV['SERVER_IP'] %>
+supervisord.port=<%= node['supervisor']['port'] %>
+supervisord.user=<%= node['supervisor']['user'] %>
+supervisord.password=<%= node['supervisor']['password'] %>
+#
+
 use = egg:gecoscc
 
 pyramid.reload_templates = true

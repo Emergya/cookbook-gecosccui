@@ -16,3 +16,6 @@ default['gecoscc-ui']['backend']['workers'] = 2
 default['gecoscc-ui']['backend']['firewall'] = 'lokkit'
 default['gecoscc-ui']['chef-server']['url'] = 'https://localhost/'
 default['gecoscc-ui']['mongodb']['url'] = 'mongodb://localhost:27017/gecoscc'
+default['gecoscc-ui']['supervisor']['port'] = '9001'
+default['gecoscc-ui']['supervisor']['user'] = 'internal'
+default['gecoscc-ui']['supervisor']['password'] = 'changeme'

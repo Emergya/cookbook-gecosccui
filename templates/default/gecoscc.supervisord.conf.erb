@@ -1,5 +1,10 @@
-[unix_http_server]
-file=<%= @virtualenv_path %>/supervisor/run/supervisor.sock
+#[unix_http_server]
+#file=<%= @virtualenv_path %>/supervisor/run/supervisor.sock
+
+[inet_http_server]
+port = 0.0.0.0:<%= node['supervisor']['port'] %>
+username = <%= node['supervisor']['user'] %>
+password = <%= node['supervisor']['password'] %>
 
 [supervisord]
 pidfile=<%= @virtualenv_path %>/supervisor/run/supervisord.pid
